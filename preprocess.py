@@ -128,7 +128,8 @@ def preprocess(imgfile, remove_lines=False):
     image = cv2.imread(imgfile)
     
     # Non-local Means (NLM)
-    denoised = cv2.fastNlMeansDenoising(image, None,h=10,templateWindowSize=7,searchWindowSize=21) 
+    #denoised = cv2.fastNlMeansDenoising(image, None,h=10,templateWindowSize=7,searchWindowSize=21) 
+    denoised = cv2.GaussianBlur(image,(5,5),0)
     
     # Transform source image to gray if it is not already
     if len(denoised.shape) != 2:
